@@ -1,0 +1,63 @@
+# 3-say_my_name.txt
+
+===========================
+A function that prints My name is <first name> <last name>
+
+===========================
+
+This modules defines a function ``say_my_name(first_name, last_name="")``.
+
+===========================
+
+::
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+
+Atleast one parameter is mandatory can not be ommitted.
+
+::
+
+    >>> say_my_name()
+    Traceback (most recent call last):
+    TypeError: say_my_name() missing a required parameter argument: 'first_name'
+
+Checking that the function accepts not more than two parameters ```firstname``` and
+```last Name```.
+
+::
+
+    >>> say_my_name("x", "y", "z")
+    Traceback (most recent call last):
+    TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
+
+The parameter ```first name``` must be a string.
+
+::
+    >>> say_my_name(24)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+    >>> say_my_name(24, "Rhova")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+The parameter ```second name``` must be a string.
+
+::
+    >>> say_my_name("Kinzani", ["0", "1", "2"])
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+The parameters both ```first name``` and ```second name``` must be string.
+
+::
+    >>> say_my_name("Kinzani", "Rhova")
+    My name is Kinzani Rhova
+
+The parameter ```last_name``` is optional. If no last name is provided,
+an empty string is printed instead.
+
+::
+    >>> say_my_name("Kinzani")
+    My name is Kinzani 
