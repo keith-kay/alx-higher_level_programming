@@ -1,0 +1,26 @@
+============================================
+Using 7-base_geometry.py
+============================================
+
+Check against positives integers
+   >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+   >>> bg = BaseGeometry()
+::
+   >>> bg.integer_validator("my_int", 10)
+
+Check against negative integer
+   >>> bg.integer_validator("number", -10)
+   Traceback (most recent call last):
+   ValueError: number must be > 0
+
+Check against infinite integer
+   >>> bg.integer_validator("infnumber", int('inf'))
+   Traceback (most recent call last):
+   ValueError: invalid literal for int() with base 10: 'inf'
+
+Check agaisnt 3 arguments
+   >>> bg.integer_validator("numbers", 1, 2)
+   Traceback (most recent call last):
+   TypeError: integer_validator() takes 3 positional arguments but 4 were given
+
+
