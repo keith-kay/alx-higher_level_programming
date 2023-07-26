@@ -4,21 +4,23 @@
 
 const request = require('request');
 const url = process.argv[2];
+const myDict = {};
 
-request(url, function (err, res, body) {
+request(url, function (err, data, body) {
   if (err) {
     console.log(err);
-  }
-  let tasks = JSON.parse(body);
-  let obj = {};
-  for (let task of tasks) {
-    if (task.completed === true) {
-      if (obj[task.userId] === undefined) {
-        obj[task.userId] = 1;
-      } else {
-        obj[task.userId]++;
+  } else {
+    const response = JSON.parse(body);
+
+    for (let i = 0; i < response.length; i++) {
+      if (response[i].completed === true) {
+        if (myDict[response[i].userId] === undefined) {
+          myDict[response[i].userId] = 1;
+        } else {
+          myDict[response[i].userId] += 1;
+        }
       }
     }
   }
-  console.log(obj);
+  console.log(myDict);
 });
